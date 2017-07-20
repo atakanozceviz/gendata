@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -89,6 +90,6 @@ func main() {
 			io.WriteString(w, "</div></body>")
 		}
 	})
-
-	http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	http.ListenAndServe(":"+port, nil)
 }
